@@ -583,7 +583,7 @@ function newRun() {
     prevCardAt: 0, nextCardAt: 100, cardLevel: 0, pendingCards: 0, cardDelay: 0,
     enemies: [], eproj: [], shots: [], waves: [], particles: [], texts: [], platforms: [], pickups: [], banners: [],
     spawnTimer: 1.6, genX: 760, shake: 0, freeze: 0, flash: 0,
-    boss: null, bossLock: null, bossIntro: 0, nextBossAt: 1000, bossCount: 0, bossName: '',
+    boss: null, bossLock: null, bossIntro: 0, nextBossAt: 800, bossCount: 0, bossName: '',
     tutorial: 8, owned: {}, seen: new Set(['slime']),
   };
 }
@@ -1423,7 +1423,7 @@ function cleanup() {
 function update(dt) {
   G.time += dt;
   if (!G.boss) G.diffTime += dt; // 보스전 중에는 시간에 따른 난이도 상승을 멈춤
-  G.diff = G.meters / 200 + G.diffTime / 80;
+  G.diff = G.meters / 200 + G.diffTime / 150;
   const lvl = Math.floor(G.diff) + 1;
   if (lvl > G.level) { G.level = lvl; banner(`위험도 ${lvl} · 적이 더 강해졌다!`, '#ffb3c6'); }
   Sound.setTempo(1 + Math.min(0.18, G.diff * 0.012));
